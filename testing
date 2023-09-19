@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generert meny</title>
+    <link href="menu.css" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <h1>InnfProg Oblig 2</h1>
+    <button id="toggleMenu" aria-label="Open the menu">
+        Menu <img src="menuicon.png" aria-hidden="true" />
+    </button>
+    <nav id="menu">
+        <!-- Eksempel: oppbygging av meny -->
+        <ul id="category"></ul>
+
+
+        <li><a href="index.html">Home</a></li>
+
+        <!-- Legg sammen JS resources under samme meny -->
+        <ul>
+            <h2>JavaScript resources</h2>
+            <li><a href="https://www.w3schools.com/js/default.asp">W3Schools</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Mozilla Developer Network</a></li>
+            <li><a href="https://jsforcats.com/">JavaScript for cats</a></li>
+        </ul>
+        <!-- Lager meny for HTML resources -->
+        <ul><h2>HTML resources</h2>
+            <li><a href="https://www.w3schools.com/html/default.asp">W3School</href></a></li>
+            <li><a href="https://validator.w3.org/">W3 Validator</a></li>
+        </ul>
+
+        <!-- Lager meny for CSS resources linkene-->
+        <ul><h2>CSS resources</h2>
+            <li><a href="https://www.w3schools.com/css/default.asp">W3School</a></li>
+            <li><a href="https://css-tricks.com/">CSS Tricks</a></li>
+        </ul>
+
+
+    </nav>
+</header>
+
+<script>
+    //Menystruktur (array på to nivåer: menupoints > categories > links in category)
+    const menuPoints = [
+        {
+            menuheader: "JavaScript resources",
+            menulinks: [
+                {
+                    url: "https://www.w3schools.com/js/default.asp",
+                    menutext: "W3Schools",
+                },
+                {
+                    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                    menutext: "Mozilla Developer Network",
+                },
+                {
+                    url: "https://jsforcats.com/",
+                    menutext: "JavaScript for cats",
+                },
+            ],
+        },
+        {
+            menuheader: "HTML resources",
+            menulinks: [
+                {
+                    url: "https://www.w3schools.com/html/default.asp",
+                    menutext: "W3Schools",
+                },
+                { url: "https://validator.w3.org/", menutext: "W3 Validator" },
+            ],
+        },
+        {
+            menuheader: "CSS resources",
+            menulinks: [
+                {
+                    url: "https://www.w3schools.com/css/default.asp",
+                    menutext: "W3Schools",
+                },
+                { url: "https://css-tricks.com/", menutext: "CSS Tricks" },
+            ],
+        },
+    ];
+
+    //Lagre knapp- og meny-element for bruk i koden:
+    const menu = document.getElementById("menu");
+    const button = document.getElementById("toggleMenu");
+
+    document.getElementById("toggleMenu").addEventListener("click", () => {
+        const menu = document.getElementById("menu");
+        const button = document.getElementById("toggleMenu");
+        if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            button.innerHTML = `Menu <img src="menuicon.png">`;
+        } else {
+            menu.classList.add("active");
+            button.innerHTML = `Close <img src="closeicon.png">`;
+        }
+    });
+
+    //Variabel for meny-HTML
+
+    let menuHTML;
+    menuHTML = `<li>${menuheader}</li>`;
+
+
+
+
+    //Gå gjennom første nivå av menupoints-array
+    menuPoints.map((category) => {
+        menuHTML += `
+        <h2>${category.menuheader}</h2>
+        ${category.url} //JEG ER HER OG SKJØNNER IKKE MER LOLZ
+
+
+    });
+
+    //TODO: Skriv ut HTML til <nav>:
+</script>
+</body>
+</html>
